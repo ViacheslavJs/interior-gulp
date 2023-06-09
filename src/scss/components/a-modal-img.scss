@@ -1,0 +1,311 @@
+/***** TODO - module a-modal-preview *********************/
+/* стиль для квадратных(~ 200px) изображений */
+/*
+.a-modal-preview.for-effects {  
+  max-width: calc(100%);
+  margin: 50px auto;               
+  padding: 0px; 
+    
+}
+
+@media screen and (orientation: landscape) {
+
+.a-modal-preview__container {
+  display: flex;
+  flex-direction: row; 
+}
+
+.a-modal-preview__container-left,
+.a-modal-preview__container-right {
+  display: flex;
+  flex-direction: row; 
+}
+
+}
+
+@media screen and (orientation: portrait) {
+
+.a-modal-preview__container {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+}
+
+.a-modal-preview__container-left,
+.a-modal-preview__container-right {
+  display: flex;
+  flex-direction: row; 
+}
+
+}
+  
+.a-modal-preview__img-box {         
+  padding: 1px;
+  background: #f6f6f8;   
+}
+ 
+.a-modal-preview__img { 
+  display: block;       
+  width: 100%;    
+  cursor: pointer;               
+  transition: 0.2s;  
+  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.a-modal-preview__img:hover { 
+  opacity: 0.8;
+}
+*/
+/*****a-modal-preview*****/
+   
+
+/***** TODO - module a-modal-preview *********************/
+/* стиль для неизменённых(соотн. сторон как есть) изображений */
+.a-modal-preview {  
+  max-width: calc(100%);
+  margin: 50px auto;               
+  padding: 0px; 
+    
+  @media screen and (orientation: landscape) {
+    &__container {
+      display: flex;
+      flex-direction: row;     
+    }
+    &__container-left,
+    &__container-right {
+      display: flex;
+      flex-direction: row; 
+      width: 100%;
+    }
+  }
+
+  @media screen and (orientation: portrait) {
+    &__container {
+      display: flex;
+      flex-direction: column; 
+      justify-content: center;
+      align-items: center;
+    }
+    &__container-left,
+    &__container-right {
+      display: flex;
+      flex-direction: row; 
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    &__container-left,
+    &__container-right {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+ 
+  &__img-box { 
+    width: 100%;  margin: 0 auto;           
+    padding: 1px;
+    background: #f6f6f8;    
+  }
+ 
+  &__img { 
+    display: block;       
+    width: 100%; 
+    height: 200px;
+    margin: 0 auto;          
+    object-fit: cover;  
+    
+    cursor: pointer;               
+    transition: 0.2s;  
+  
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  &__img:hover { 
+    opacity: 0.8;
+  }
+
+}
+/***** module a-m-preview *****/
+
+
+
+/*** layer, single images ***/
+.a-modal-img__image-box {
+  display: none;		    
+  position: absolute;  
+  top: 0;
+  right: 0;		  
+  left: 0;
+  /*bottom: 0px; */	
+  max-width: calc(100% - 10px);      
+  margin: auto;       
+  z-index: 300;   
+  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+}
+
+@media screen and (orientation: landscape) {
+   
+  .a-modal-img__image-box {  
+    max-width: calc(78%); 
+    margin: auto;  
+  }
+
+}
+
+.a-modal-img__image {    
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 10px);   
+  margin: auto;
+  /*border: 1px solid rgba(0, 0, 0, 0.4);*/
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.3);   
+	
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);	 	 	 	
+}
+
+@media screen and (min-width: 955px) {
+
+  .a-modal-img__image-box  {  
+    max-width: 720px;            
+  }
+
+}	
+
+.a-modal-img__layer {
+
+  display: none;
+  /*align-items: center;*/
+  position: fixed; 
+  top: 0;
+  left: 0;   
+  right: 0;
+  bottom: 0;		    
+  background: rgba(256, 256, 256, 0.7);  
+  z-index: 300;	      
+  overflow-x: hidden;
+  cursor: pointer;
+  	
+  animation: ani 0.8s forwards;  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    
+}
+
+/* Animation */ 
+/*
+
+.a-modal-img__image-box {
+    animation-name: zoom;  
+    animation-duration: 0.6s; 
+}
+
+@keyframes zoom {                               
+    from {transform:scale(0)}
+    to {transform:scale(1)}    
+}
+
+*/
+
+.a-modal-img__image-box {
+  opacity: 0;
+  animation: ani 0.8s forwards;
+}
+
+@keyframes ani {
+  0% {opacity: 0.2;}
+  100% {opacity: 1;}
+}
+
+/*** close icon ***/
+
+.icon-close-img {
+  display: inline-block;
+  position: absolute;	
+  top: calc(-50px );
+  right: calc(0px);	
+  font-size: 37px;	
+  color: gray;
+  z-index: 3;
+  transition: 0.2s;      
+  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
+}
+	  
+.icon-close-img:hover,
+.icon-close-img:focus {         
+  text-decoration: none;
+  cursor: pointer;
+  color: silver; 	  
+}
+
+	  
+@media screen and (orientation: landscape) {
+  /* TODO - for inscription Close */
+  /*
+  .icon-close-img::before {
+  
+    content: "Close";
+    position: absolute; 
+    font-size: 1rem;
+    font-weight: bold;
+    top: calc(-5px);
+    right: calc(37px);
+     
+  }*/
+ 
+  /* TODO - for the "cross in a square" icon (or class="fas fa-window-close") */
+  /*
+  .icon-close-img::before {
+  
+    content: "\f410";
+    position: absolute; 
+    font-size: 37px;
+    /*font-weight: bold; /* add for fat
+    top: calc(-20px);
+    right: calc(37px);
+     
+  }
+  */
+  
+  /* TODO - for the "cross" icon */
+  /*
+  .icon-close-img::before {
+  
+    content: "\f00d";
+    position: absolute; 
+    font-size: 37px;
+    font-weight: bold; /* does not work without bold 
+    top: calc(-10px);
+    right: calc(-37px);
+     
+  }
+  */
+  
+  /* TODO - for &times; between tags */
+  /*
+  .icon-close-img {
+    
+    position: absolute; 
+    font-size: 37px;    
+    top: calc(-10px);
+    right: calc(-40px);
+     
+  }
+  */
+    
+  .icon-close-img {   
+    content: "\f057";
+    position: absolute;
+    top: calc(0px);
+    right: calc(-50px);
+    font-size: 37px;
+    /*font-weight: bold;*/    
+     
+  }
+
+}	
+
+

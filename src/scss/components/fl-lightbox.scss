@@ -1,0 +1,255 @@
+ 	      
+#modal-layer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;		    
+  background: rgba(0, 0, 0, 0.8); 
+  /*background: rgba(256, 256, 256, 0.7); /* layer color */
+  z-index: 90;	      
+  overflow: auto;
+  cursor: pointer;
+  
+  opacity: 0;
+  animation: a-an 0.8s forwards;
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);	
+}
+          
+.fl-lightbox__modal {	                 
+  position: relative;          
+  top: 0;   
+  right: 0;		  
+  left: 0;   
+  /*bottom: 0;*/
+  
+  width: calc(100%);     
+  margin: auto;  
+  z-index: 100;       	  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.4);
+  background: #444444;
+  background: #181818; 
+  overflow: hidden;
+  
+  opacity: 0;
+  animation: a-an 0.8s forwards;                                                                                   	  
+}
+
+.fl-lightbox__images-box {   
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+}
+
+.fl-lightbox__images {                  
+  display: block; 
+  max-width: 100%; /* 95% */ 
+  max-height: calc(100vh - 20px);
+  margin: auto;  
+    
+  object-fit: contain;
+  object-position: center;   
+  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}	
+
+/* indicators */
+.fl-lightbox__dot {
+  height: 8px;
+  width: 8px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.fl-lightbox__dot-box {
+  position: absolute;
+  left: 25%; 
+  right: 25%;
+  bottom: 2%;
+  text-align: center;
+}
+
+
+.fl-lightbox__prev, 
+.fl-lightbox__next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 10px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  background: rgba(0, 0, 0, 0.3); 
+  user-select: none;
+  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.fl-lightbox__next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.fl-lightbox__prev:hover,
+.fl-lightbox__next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.fl-lightbox__close {
+  color: #f2f2f2;
+  font-size: 28px;
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.fl-lightbox__dot:hover {
+  background-color: green;
+}
+
+@media only screen and (max-width: 300px) {
+  
+  .fl-lightbox__prev, 
+  .fl-lightbox__next, 
+  .text {
+    font-size: 11px
+  }
+  
+}
+
+/* Animation for gallery */
+/*
+.fl-lightbox__modal {
+  animation-name: fl-appearance;  
+  animation-duration: 0.6s; 
+}
+
+@keyframes fl-appearance {                               
+  from {transform:scale(0)}
+  to {transform:scale(1)}    
+}
+*/
+
+@keyframes fl-an {
+  0% {opacity: 0.2;}
+  100% {opacity: 1;}
+}
+
+@keyframes fl-anim {
+  0% {opacity: 0.2;}
+  100% {opacity: 1;}
+}
+
+.fl-lightbox__images-box {
+  -webkit-animation-name: fl-fade;
+  -webkit-animation-duration: 1s;
+  animation-name: fl-fade;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes fl-fade {
+  from {opacity: 0.6} 
+  to {opacity: 1}
+}
+
+@keyframes fl-fade {
+  from {opacity: 0.6} 
+  to {opacity: 1}
+}
+
+/* TODO - variant-slider-0 */
+
+@media screen and (orientation: landscape) {   
+  .fl-lightbox__modal {  
+    max-width: calc(80%); 
+    margin: auto;  
+  }	  
+}
+
+@media screen and (min-width: 1000px) {
+  .fl-lightbox__modal  {    
+    max-width: 720px;      
+    margin: auto;    
+  }	
+}
+
+/* js - utility classes */
+.fl-lightbox__images-box.to-left { 
+  opacity: 0;
+  animation: a-swipe-left 0.4s forwards; 
+} 
+
+@keyframes fl-swipe-left {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  /*0% {transform: translateY(150%);}
+  100% {transform: translateX(0);}*/
+  0% {transform: translateX(150%);}
+  100% {transform: translateY(0);}
+} 
+  
+.fl-lightbox__images-box.to-right { 
+  opacity: 0;
+  animation: fl-swipe-right 0.4s forwards; 
+}
+ 
+@keyframes fl-swipe-right {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  /*0% {transform: translateY(-150%);}
+  100% {transform: translateX(0);}*/
+  0% {transform: translateX(-150%);}
+  100% {transform: translateY(0);}   
+}
+
+.fl-controls {
+  display: none;
+  opacity: 0;
+  animation: fl-anim 0.3s forwards; 
+  /*animation: fl-anim 0.3s linear forwards;*/
+}
+
+.fl-show {
+  display: block;
+}
+
+.fl-dot-active {
+  background-color: green;
+}
+
+/**************/
+
+/* TODO - effect */
+.fl-filter {
+  /*filter: blur(2px);*/
+  filter: grayscale(100%); /* changes color to black and white */	
+}
+
+
