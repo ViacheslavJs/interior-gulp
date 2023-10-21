@@ -1,0 +1,252 @@
+.t-carousel {
+  position: relative; 
+  /*width: 398px;*/
+  max-width: 100%;
+  padding: 10px 0;
+                      
+  background: #eee;
+}
+
+.t-carousel__preview-img {  
+  width: 150px;
+  height: 100%;
+  /*margin: 0.5px;*/
+  object-fit: cover;
+  /* make it block to remove space around images */
+  display: block;
+}
+
+.t-carousel__preview-img:hover { 
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.6s;
+}
+
+
+.t-arrow {
+  position: absolute;
+  top: 55px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.7); 
+  border: none;
+  font-size: 24px;
+  line-height: 24px;
+  color: #ffffff;
+  z-index: 10;
+}
+
+.t-arrow:focus {
+  outline: none;
+}
+
+.t-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.t-prev {
+  left: 0;
+  border-radius: 0 3px 3px 0;  
+}
+
+.t-next {
+  right: 0;  
+  border-radius: 3px 0 0 3px;
+}
+
+.t-carousel__gallery {
+  /*width: 390px;*/  
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.t-carousel__list {
+  height: 130px; 
+  width: 9999px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: margin-left 2000ms;
+  /* remove white-space between inline-block'ed li */
+  /* http://davidwalsh.name/remove-whitespace-inline-block */
+  font-size: 0;
+}
+
+.t-carousel__list-item { 
+  display: inline-block;
+  height: 130px;
+    
+}
+
+/*** layer, t-modal-img ***/
+.t-modal-img__image-box {
+  display: none;		    
+  position: relative;
+  top: 0;
+  right: 0;		  
+  left: 0;
+  bottom: 0px; 	
+  max-width: calc(100% - 10px);      
+  margin: auto;       
+  z-index: 2;   
+  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+}
+
+@media screen and (orientation: landscape) {   
+  .t-modal-img__image-box {  
+    max-width: calc(78%); 
+    margin: auto;  
+  }
+}
+
+.t-modal-img__image {    
+  display: block;
+  max-width: 100%; 
+  max-height: calc(100vh - 10px);  
+  margin: auto;
+  /*border: 1px solid rgba(0, 0, 0, 0.4);*/
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.3);   
+	
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);	 	 	 	
+}
+
+@media screen and (min-width: 955px) {
+  .t-modal-img__image-box  {  
+    max-width: 720px;            
+  }
+}	
+
+.t-modal-img__layer {
+  display: none;
+  align-items: center;
+  position: fixed; 
+  top: 0;
+  left: 0;   
+  right: 0;
+  bottom: 0;		    
+  background: rgba(256, 256, 256, 0.7);  
+  z-index: 200;	      
+  overflow-x: hidden;
+  cursor: pointer;
+  	
+  animation: ani 0.8s forwards;  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);   
+}
+
+/* Animation */ 
+/*
+
+.t-modal-img__image-box {
+    animation-name: zoom;  
+    animation-duration: 0.6s; 
+}
+
+@keyframes zoom {                               
+    from {transform:scale(0)}
+    to {transform:scale(1)}    
+}
+
+*/
+
+.t-modal-img__image-box {
+  opacity: 0;
+  animation: ani 0.8s forwards;
+}
+
+@keyframes ani {
+  0% {opacity: 0.2;}
+  100% {opacity: 1;}
+}
+
+/*** close icon ***/
+
+.icon-close-img {
+  display: inline-block;
+  position: absolute;	
+  top: calc(-50px );
+  right: calc(0px);	
+  font-size: 37px;	
+  color: gray;
+  z-index: 3;
+  transition: 0.2s;      
+  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
+}
+	  
+.icon-close-img:hover,
+.icon-close-img:focus {         
+  text-decoration: none;
+  cursor: pointer;
+  color: silver; 	  
+}
+
+	  
+@media screen and (orientation: landscape) {
+  /* TODO - for inscription Close */
+  /*
+  .icon-close-img::before {
+  
+    content: "Close";
+    position: absolute; 
+    font-size: 1rem;
+    font-weight: bold;
+    top: calc(-5px);
+    right: calc(37px);
+     
+  }*/
+ 
+  /* TODO - for the "cross in a square" icon (or class="fas fa-window-close") */
+  /*
+  .icon-close-img::before {
+  
+    content: "\f410";
+    position: absolute; 
+    font-size: 37px;
+    /*font-weight: bold; /* add for fat
+    top: calc(-20px);
+    right: calc(37px);
+     
+  }
+  */
+  
+  /* TODO - for the "cross" icon */
+  /*
+  .icon-close-img::before {
+  
+    content: "\f00d";
+    position: absolute; 
+    font-size: 37px;
+    font-weight: bold; /* does not work without bold 
+    top: calc(-10px);
+    right: calc(-37px);
+     
+  }
+  */
+  
+  /* TODO - for &times; between tags */
+  /*
+  .icon-close-img {
+    
+    position: absolute; 
+    font-size: 37px;    
+    top: calc(-10px);
+    right: calc(-40px);
+     
+  }
+  */
+    
+  .icon-close-img {   
+    content: "\f057";
+    position: absolute;
+    top: calc(0px);
+    right: calc(-50px);
+    font-size: 37px;
+    /*font-weight: bold;*/    
+     
+  }
+
+}	
+
+
+
